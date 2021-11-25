@@ -1,14 +1,19 @@
-import Form from '../Forms/Form';
-import TodoList from '../Todolist/TestList';
-import Filter from '../Filter/Filter';
-import { useFetchContactQuery } from '../../redux/app/operation';
-export default function Phonebook() {
+// import { Component } from 'react';
+import Form from '../components/Forms/Form';
+import TodoList from '../components/Todolist/Todolist';
+import Filter from '../components/Filter/Filter';
+import { useFetchContactQuery } from '../redux/app/operation';
+
+function Phonebook() {
   const { data: contactApi } = useFetchContactQuery();
   return (
-    <container>
+    <div>
       <Form contact={contactApi} />
       <Filter contact={contactApi} />
+      {/* <TodoList contact={contactApi} /> */}
       {contactApi && <TodoList contact={contactApi} />}
-    </container>
+    </div>
   );
 }
+
+export default Phonebook;

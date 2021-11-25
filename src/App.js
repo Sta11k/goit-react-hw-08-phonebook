@@ -1,7 +1,11 @@
-import { Component } from 'react';
+// import { Component } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Phonebook } from './components/Container/Phonebook';
+import Phonebook from './pages/Phonebook';
+import { Home } from './pages/Home';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+
 // import Form from './components/Forms/Form';
 // import TodoList from './components/Todolist/Todolist';
 // import Filter from './components/Filter/Filter';
@@ -12,6 +16,7 @@ import { Phonebook } from './components/Container/Phonebook';
 // } from '../src/redux/app/operation';
 export default function App() {
   // const { data: contactApi } = useFetchContactQuery();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,13 +26,13 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
+              <Link to="/phonebook">Phonebook</Link>
+            </li>
+            <li>
               <Link to="/login">Login</Link>
             </li>
             <li>
               <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <Link to="/phonebook">Phonebook</Link>
             </li>
           </ul>
         </nav>
@@ -37,10 +42,10 @@ export default function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Component />} />
-          <Route path="/login" element={<Component />} />
-          <Route path="/register" element={<Component />} />
-          <Route path="/phonebook" element={<Component />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/phonebook" element={<Phonebook />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </main>
     </div>
