@@ -7,6 +7,7 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { PublicRoute } from './routs/PublicRout';
 import { PrivateRoute } from './routs/PrivateRout';
+const isAuth = false;
 
 export default function App() {
   return (
@@ -31,15 +32,22 @@ export default function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<PrivateRoute component={Home} />} />
+          <Route
+            path="/"
+            element={<PrivateRoute isAuth={isAuth} component={Home} />}
+          />
           <Route
             path="/phonebook"
-            element={<Phonebook component={Phonebook} />}
+            element={<PrivateRoute isAuth={isAuth} component={Phonebook} />}
           />
-          <Route path="/login" element={<PublicRoute component={Login} />} />
+          <Route
+            path="/login"
+            isAuth={isAuth}
+            element={<PublicRoute component={Login} />}
+          />
           <Route
             path="/register"
-            element={<PublicRoute component={Register} />}
+            element={<PublicRoute isAuth={isAuth} component={Register} />}
           />
         </Routes>
       </main>
