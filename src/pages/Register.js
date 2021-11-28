@@ -1,10 +1,13 @@
-// import { useState } from 'react';
+import { useState } from 'react';
+import s from './Register.module.css';
 // import { useDispatch } from 'react-redux';
 // import { registerThunk } from '../redux/thunks';
 export function Register() {
-  //   const [name, setName] = useState('');
-  //   const [email, setEmail] = useState('');
-  //   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const  dispatch = useDispatch();
+
   //   const dispatch = useDispatch();
   //   const handleChange = e => {
   //     switch (e.target.name) {
@@ -36,6 +39,42 @@ export function Register() {
   return (
     <>
       <h2>Register Form</h2>
+      <form className="register">
+        <ul className={s.register__list}>
+          <li className={s.gister__item}>
+            <label className={s.register__label}>
+              Name
+              <input type="text" name="name" value={name} placeholder="name" />
+            </label>
+          </li>
+
+          <li className="register__item">
+            <label className={s.register__label}>
+              Email
+              <input
+                type="text"
+                name="email"
+                value={email}
+                placeholder="email"
+              />
+            </label>
+          </li>
+          <li className="register__item">
+            <label className={s.register__label}>
+              {' '}
+              Password
+              <input
+                type="text"
+                name="password"
+                value={password}
+                placeholder="password"
+              />
+            </label>
+          </li>
+        </ul>
+        <button type="submit">add</button>
+      </form>
+
       {/* <form onSubmit={handlSubmit}>
         <input
           type="text"

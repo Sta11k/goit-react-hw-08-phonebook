@@ -8,6 +8,6 @@ export function Login() {
     </>
   );
 }
-// "name": "Adrian Cross",
+
 //   "email": "across@mail.com",
 //   "password": "examplepassword"

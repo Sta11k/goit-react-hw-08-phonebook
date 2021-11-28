@@ -4,8 +4,10 @@
 //   phonebookReducer,
 //   composeWithDevTools(applyMiddleware()),
 // );
+
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './app/slices-auth';
 // import logger from 'redux-logger';
 import {
   // persistStore,
@@ -34,6 +36,7 @@ export const store = configureStore({
   reducer: {
     // contacts: phonebookReducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
+    auth: authReducer,
     getFilter: filter,
   },
   middleware: getDefaultMiddleware =>
