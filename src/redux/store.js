@@ -1,17 +1,10 @@
-// import { createStore, applyMiddleware } from 'redux';
-// import { composeWithDevTools } from 'redux-devtools-extension';
-// export const store = createStore(
-//   phonebookReducer,
-//   composeWithDevTools(applyMiddleware()),
-// );
-
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './app/slices-auth';
 // import logger from 'redux-logger';
 import {
-  // persistStore,
-  // persistReducer,
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -19,24 +12,20 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
-// import { phonebookReducer } from './app/app-phonebook-reducer';
+import storage from 'redux-persist/lib/storage';
 import { contactsApi } from './app/operation';
 import filter from './app/app-phonebook-reducer';
-// const phonebookPersistConfig = {
-//   key: 'contact',
-//   storage,
-//   blacklist: ['filter'],
-// };
-// const persisteReducer = persistReducer(
-//   phonebookPersistConfig,
-//   phonebookReducer,
-// );
+const authPersistConfig = {
+  key: 'authToken',
+  storage,
+  whitelist: ['token'],
+};
+const authPersisteReducer = persistReducer(authPersistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     // contacts: phonebookReducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
-    auth: authReducer,
+    auth: authPersisteReducer,
     getFilter: filter,
   },
   middleware: getDefaultMiddleware =>
@@ -54,3 +43,5 @@ export const store = configureStore({
 });
 
 setupListeners(store.dispatch);
+
+export const persistor = persistStore(store);

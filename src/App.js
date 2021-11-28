@@ -7,9 +7,28 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { PublicRoute } from './routs/PublicRout';
 import { PrivateRoute } from './routs/PrivateRout';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { currentThunk } from './redux/app/thunks';
+import { logOutThunk } from './redux/app/thunks';
 const isAuth = false;
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(currentThunk());
+
+    // return () => {
+    //   cleanup
+    // }
+  }, [dispatch]);
+
+  const handleLogOut = () => {
+    console.log('click');
+    dispatch(logOutThunk());
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -26,6 +45,11 @@ export default function App() {
             </li>
             <li>
               <Link to="/register">Register</Link>
+            </li>
+            <li>
+              <button type="button" onClick={handleLogOut}>
+                Log Out
+              </button>
             </li>
           </ul>
         </nav>
