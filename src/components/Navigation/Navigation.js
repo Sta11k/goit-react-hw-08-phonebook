@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getisAuth } from '../../redux/app/selector-auth';
+import { getIsFetchingCurrent } from '../../redux/app/selector-auth';
 
-function Navigation({ isLoading }) {
+function Navigation() {
   const isAuth = useSelector(getisAuth);
+  const isLoading = useSelector(getIsFetchingCurrent);
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
@@ -11,7 +13,7 @@ function Navigation({ isLoading }) {
       {isAuth && (
         <NavLink
           to="/phonebook"
-          //   exact
+          // exact
           //   className={s.link}
           //   activeClassName={s.activeLink}
         >

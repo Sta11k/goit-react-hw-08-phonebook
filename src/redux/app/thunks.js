@@ -53,23 +53,25 @@ export const currentThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
     const token = state.auth.token;
-
+    // const Loading = state.auth.isLoading;
     // console.log('state', state.auth.isAuth);
-    if (!token) return;
+
+    if (!token) {
+      return;
+    }
 
     try {
       const response = await fetch(BASE_USER_URL + userCurrent, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${state.auth.token}`,
+          Authorization: `Bearer ${token}`,
         },
 
         // body: JSON.stringify(user),
       });
 
       const data = await response.json();
-      // console.log("response", data);// { user:{name:"", email:'' }}
       return data; //action payload
     } catch (err) {
       rejectWithValue({ error: err.message });
@@ -82,7 +84,7 @@ export const logOutThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
     const token = state.auth.token;
-    // if (!token) return;
+    if (!token) return;
     try {
       const response = await fetch(BASE_USER_URL + userLogout, {
         method: 'POST',

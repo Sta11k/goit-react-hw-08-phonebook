@@ -8,7 +8,8 @@ const authSlice = createSlice({
     error: null,
     isLoading: false,
     isAuth: false,
-    // isFetchingCurrentUser: false,
+
+    isFetchingCurrentUser: false,
     // myProp: 'Test',
   },
   // reducers: {
@@ -73,8 +74,6 @@ const authSlice = createSlice({
         ...state,
 
         isLoading: true,
-        isAuth: false,
-        // isFetchingCurrentUser: true,
       };
     },
     [currentThunk.fulfilled](state, action) {
@@ -83,7 +82,7 @@ const authSlice = createSlice({
         isLoading: false,
         user: action.payload,
         isAuth: true,
-        // isFetchingCurrentUser: false,
+        isFetchingCurrentUser: false,
       };
     },
     [currentThunk.rejected](state, action) {
@@ -106,10 +105,10 @@ const authSlice = createSlice({
     [logOutThunk.fulfilled](state, action) {
       return {
         ...state,
+        isAuth: false,
         isLoading: false,
         user: { name: '', email: '' },
         token: '',
-        isAuth: false,
       };
     },
     [logOutThunk.rejected](state, action) {
