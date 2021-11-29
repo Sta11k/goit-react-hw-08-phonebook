@@ -65,6 +65,7 @@ export default function App() {
           <Route
             path="/"
             element={<Home />}
+            // exact
             // element={<PrivateRoute isAuth={isAuth} component={Home}/>}
           />
           <Route

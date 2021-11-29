@@ -1,6 +1,6 @@
 // export const getContacts = state => state.contacts.contact;
 export const getFilter = state => state.getFilter.filter;
-// export const getLoading = state => state.auth.isLoading;
+// export const getisAuth  = state => state.auth.isLoading;
 // export const getVisibleContacts = state => {
 //   const contacts = getContacts(state);
 //   const filter = getFilter(state);

@@ -8,7 +8,7 @@ const authSlice = createSlice({
     error: null,
     isLoading: false,
     isAuth: false,
-    isFetchingCurrentUser: false,
+    // isFetchingCurrentUser: false,
     // myProp: 'Test',
   },
   // reducers: {
@@ -41,6 +41,7 @@ const authSlice = createSlice({
         ...state,
         isLoading: false,
         error: action.payload,
+        isAuth: false,
       };
     },
     [loginThunk.pending](state, action) {
@@ -64,14 +65,16 @@ const authSlice = createSlice({
         ...state,
         isLoading: false,
         error: action.payload,
+        isAuth: false,
       };
     },
     [currentThunk.pending](state, action) {
       return {
         ...state,
-        isFetchingCurrentUser: true,
+
         isLoading: true,
         isAuth: false,
+        // isFetchingCurrentUser: true,
       };
     },
     [currentThunk.fulfilled](state, action) {
@@ -80,23 +83,24 @@ const authSlice = createSlice({
         isLoading: false,
         user: action.payload,
         isAuth: true,
-        isFetchingCurrentUser: false,
+        // isFetchingCurrentUser: false,
       };
     },
     [currentThunk.rejected](state, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload,
         isAuth: false,
-        isFetchingCurrentUser: false,
+        error: action.payload,
+
+        // isFetchingCurrentUser: false,
       };
     },
     [logOutThunk.pending](state, action) {
       return {
         ...state,
         isLoading: true,
-        isAuth: true,
+        isAuth: false,
       };
     },
     [logOutThunk.fulfilled](state, action) {
@@ -113,6 +117,7 @@ const authSlice = createSlice({
         ...state,
         isLoading: false,
         error: action.payload,
+        isAuth: false,
         // isAuth: false,
       };
     },

@@ -2,16 +2,11 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getisAuth } from '../../redux/app/selector-auth';
 
-function Navigation() {
+function Navigation({ isLoading }) {
   const isAuth = useSelector(getisAuth);
   return (
     <nav>
-      <NavLink
-        to="/"
-        //   exact
-      >
-        Home
-      </NavLink>
+      <NavLink to="/">Home</NavLink>
 
       {isAuth && (
         <NavLink

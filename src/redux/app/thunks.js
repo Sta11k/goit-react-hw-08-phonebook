@@ -61,7 +61,7 @@ export const currentThunk = createAsyncThunk(
       const response = await fetch(BASE_USER_URL + userCurrent, {
         method: 'GET',
         headers: {
-          // "Content-Type":"application/json",
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${state.auth.token}`,
         },
 

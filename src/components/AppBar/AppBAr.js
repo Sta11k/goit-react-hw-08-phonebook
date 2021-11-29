@@ -6,12 +6,12 @@ import AuthNav from '../AuthNav/AuthNav';
 import { getisAuth } from '../../redux/app/selector-auth';
 
 export default function AppBar() {
-  const isAuth = useSelector(getisAuth);
-
+  const isAuthApp = useSelector(getisAuth);
+  console.log('AppBar', isAuthApp);
   return (
     <header>
       <Navigation />
-      {isAuth ? <UserMenu /> : <AuthNav />}
+      {isAuthApp ? <UserMenu /> : <AuthNav />}
     </header>
   );
 }
