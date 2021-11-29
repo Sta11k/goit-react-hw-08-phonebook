@@ -10,11 +10,16 @@ import { PrivateRoute } from './routs/PrivateRout';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { currentThunk } from './redux/app/thunks';
-import { logOutThunk } from './redux/app/thunks';
+// import { logOutThunk } from './redux/app/thunks';
+import AppBar from '../src/components/AppBar/AppBAr';
+// import { getIsFetchingCurrent } from './redux/app/selector-auth';
+// import { authSelector } from './redux/app/selector-auth';
+
 const isAuth = false;
 
 export default function App() {
   const dispatch = useDispatch();
+  // const isFetchingCurrentUser = useSelector(getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(currentThunk());
@@ -24,14 +29,15 @@ export default function App() {
     // }
   }, [dispatch]);
 
-  const handleLogOut = () => {
-    console.log('click');
-    dispatch(logOutThunk());
-  };
-
+  // const handleLogOut = () => {
+  //   console.log('click');
+  //   dispatch(logOutThunk());
+  // };
   return (
+    // isFetchingCurrentUser && (
     <div className="App">
-      <header className="App-header">
+      <AppBar />
+      {/* <header className="App-header">
         <nav>
           <ul>
             <li>
@@ -53,16 +59,19 @@ export default function App() {
             </li>
           </ul>
         </nav>
-      </header>
+      </header> */}
       <main>
         <Routes>
           <Route
             path="/"
-            element={<PrivateRoute isAuth={isAuth} component={Home} />}
+            element={<Home />}
+            // element={<PrivateRoute isAuth={isAuth} component={Home}/>}
           />
           <Route
             path="/phonebook"
-            element={<PrivateRoute isAuth={isAuth} component={Phonebook} />}
+            element={
+              <PrivateRoute isAuth={isAuth} restricted component={Phonebook} />
+            }
           />
           <Route
             path="/login"
@@ -76,5 +85,6 @@ export default function App() {
         </Routes>
       </main>
     </div>
+    // )
   );
 }

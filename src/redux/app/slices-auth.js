@@ -8,6 +8,7 @@ const authSlice = createSlice({
     error: null,
     isLoading: false,
     isAuth: false,
+    isFetchingCurrentUser: false,
     // myProp: 'Test',
   },
   // reducers: {
@@ -68,6 +69,7 @@ const authSlice = createSlice({
     [currentThunk.pending](state, action) {
       return {
         ...state,
+        isFetchingCurrentUser: true,
         isLoading: true,
         isAuth: false,
       };
@@ -78,6 +80,7 @@ const authSlice = createSlice({
         isLoading: false,
         user: action.payload,
         isAuth: true,
+        isFetchingCurrentUser: false,
       };
     },
     [currentThunk.rejected](state, action) {
@@ -86,6 +89,7 @@ const authSlice = createSlice({
         isLoading: false,
         error: action.payload,
         isAuth: false,
+        isFetchingCurrentUser: false,
       };
     },
     [logOutThunk.pending](state, action) {

@@ -53,7 +53,8 @@ export const currentThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
     const token = state.auth.token;
-    // console.log("state", state.auth.token);
+
+    // console.log('state', state.auth.isAuth);
     if (!token) return;
 
     try {
