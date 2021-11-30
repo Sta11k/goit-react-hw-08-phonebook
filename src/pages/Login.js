@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import s from './Register.module.css';
+import s from './Login.module.css';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../redux/app/thunks.js';
 export function Login() {
@@ -38,7 +38,7 @@ export function Login() {
 
   return (
     <>
-      <h2>Login Form</h2>
+      {/* <h2>Login Form</h2> */}
       <form className="register" onSubmit={handlSubmit}>
         <ul className={s.register__list}>
           {/* <li className={s.gister__item}>
@@ -79,7 +79,9 @@ export function Login() {
             </label>
           </li>
         </ul>
-        <button type="submit">Login</button>
+        <button type="submit" className={s.login__button}>
+          Login
+        </button>
       </form>
       <ToastContainer />
     </>

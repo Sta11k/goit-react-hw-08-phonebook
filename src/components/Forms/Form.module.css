@@ -24,3 +24,8 @@ form {
 /* .form__name {
   display: flex;
 } */
+
+.submit {
+  background-color: rgb(212, 9, 145);
+  color: aliceblue;
+}

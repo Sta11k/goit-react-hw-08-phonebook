@@ -11,9 +11,10 @@
   align-items: flex-start;
 }
 
-.register__button {
+.login__button {
   width: 100px;
   border-radius: 35%;
   background-color: rgb(95, 11, 11);
+
   color: rgb(219, 225, 230);
 }

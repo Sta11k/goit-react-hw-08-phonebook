@@ -45,7 +45,7 @@ function Form({ contact }) {
     <form onSubmit={handleSabmit} className={s.m}>
       <h2 className={s.title}>Phonebook</h2>
       <label className={s.form__name}>
-        Name
+        Name:{' '}
         <input
           // id={this.contactIdName}
           onChange={e => setName(e.currentTarget.value)}
@@ -58,7 +58,8 @@ function Form({ contact }) {
         />
       </label>
       <label className={s.form__number}>
-        Number
+        {' '}
+        Number:{' '}
         <input
           // id={this.contactIdNumber}
           onChange={e => setNumber(e.currentTarget.value)}
@@ -113,7 +114,9 @@ function Form({ contact }) {
           Other
         </label>
       </div>
-      <button type="submit">Add contacts</button>
+      <button className={s.submit} type="submit">
+        Add contacts
+      </button>
     </form>
   );
 }

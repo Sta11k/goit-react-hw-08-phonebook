@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import s from './Register.module.css';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../redux/app/thunks.js';
@@ -41,10 +43,10 @@ export function Register() {
 
   return (
     <>
-      <h2>Register Form</h2>
+      {/* <h2>Register Form</h2> */}
       <form className="register" onSubmit={handlSubmit}>
         <ul className={s.register__list}>
-          <li className={s.gister__item}>
+          <li className={s.register__item}>
             <label className={s.register__label}>
               Name
               <input
@@ -57,7 +59,7 @@ export function Register() {
             </label>
           </li>
 
-          <li className="register__item">
+          <li className={s.register__item}>
             <label className={s.register__label}>
               Email
               <input
@@ -69,7 +71,7 @@ export function Register() {
               />
             </label>
           </li>
-          <li className="register__item">
+          <li className={s.register__item}>
             <label className={s.register__label}>
               {' '}
               Password
@@ -83,11 +85,11 @@ export function Register() {
             </label>
           </li>
         </ul>
-        <button type="submit">add</button>
+        <button type="submit" className={s.register__button}>
+          add
+        </button>
       </form>
+      <ToastContainer />
     </>
   );
 }
-// "name": "Adrian Cross",
-//   "email": "across@mail.com",
-//   "password": "examplepassword"

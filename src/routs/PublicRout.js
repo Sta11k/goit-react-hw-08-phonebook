@@ -6,7 +6,7 @@ export function PublicRoute({ component: Component }) {
   // const shouldRedirect = isAuth && restricted;
   return (
     <>
-      <h1> PublicRoute</h1>
+      {/* <h1> PublicRoute</h1> */}
       {isAuth ? <Navigate to="/" /> : <Component />}
     </>
   );

@@ -1,25 +1,4 @@
-// import axios from 'axios';
-// import { configureStore } from '@reduxjs/toolkit';
-// import { setupListeners } from '@reduxjs/toolkit/query';
-// import { phonebookReducer } from './app-phonebook-reducer';
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import {
-//   getContactsRequest,
-//   getContactsSuccess,
-//   getContactsError,
-//   addContactsRequest,
-//   addContactsSuccess,
-//   addContactsError,
-//   deleteContactsRequest,
-//   deleteontactsSuccess,
-//   deleteContactsError,
-// } from './operatin';
-
-// axios.get('https://61935e66d3ae6d0017da850e.mockapi.io/contacts');
-
-//youtu.be/xJ2cgRkR8D0?t=4941
-//redux-toolkit.js.org/rtk-query/api/createApi
 
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',

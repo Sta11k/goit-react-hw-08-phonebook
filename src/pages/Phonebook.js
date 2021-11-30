@@ -7,11 +7,11 @@ import { useFetchContactQuery } from '../redux/app/operation';
 
 function Phonebook() {
   const { data: contactApi } = useFetchContactQuery();
+
   return (
-    <div>
+    <div className={s.phonebook}>
       <Form contact={contactApi} />
       <Filter contact={contactApi} />
-      {/* <TodoList contact={contactApi} /> */}
       {contactApi && <TodoList contact={contactApi} />}
     </div>
   );

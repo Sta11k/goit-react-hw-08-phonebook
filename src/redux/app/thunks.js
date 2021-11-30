@@ -9,14 +9,6 @@ const userCurrent = '/users/Current';
 export const registerThunk = createAsyncThunk(
   'users/register',
   async (user, { rejectWithValue, getState }) => {
-    // const state = getState();
-    // const token = state.auth.token;
-    // const state = getState();
-    // const token = state.auth.token;
-    // if (!token) {
-    //   return;
-    // }
-
     try {
       const response = await fetch(BASE_USER_URL + userRegister, {
         method: 'POST',
@@ -26,15 +18,19 @@ export const registerThunk = createAsyncThunk(
 
         body: JSON.stringify(user),
       });
+      console.log('response.status', response.status);
+      if (response.status !== 201) {
+        toast.error('User creation error! Please try again!');
+        throw new Error(400);
+      }
 
       const data = await response.json();
-      // console.log("response", data);// {token:'', user:{name:"", email:'' }}
+
       return data; //action payload
-    } catch (err) {
-      rejectWithValue({ error: err.message });
-      if (err.response.status === 400) {
-        toast.error('User creation error! Please try again!');
-      } else if (err.response.status === 500) {
+    } catch (error) {
+      rejectWithValue({ error: error.message });
+
+      if (error.response.status === 500) {
         toast.error('Server error! Please try later!');
       } else {
         toast.error('Something went wrong!');
@@ -61,19 +57,14 @@ export const loginThunk = createAsyncThunk(
         body: JSON.stringify(user),
       });
       if (response.status !== 200) {
-        toast.error('User creation error! Please try again!');
+        toast.error('User error! Please try again!');
         throw new Error(400);
       }
-      // console.log('response', response.status);
       const data = await response.json();
-      // console.log("response", data);// {token:'', user:{name:"", email:'' }}
+
       return data; //action payload
     } catch (error) {
       rejectWithValue({ error: error.message });
-      // console.log('error.message', error.message);
-      // if (error.response.status === 400) {
-      //   toast.error('User error! Please try again!');
-      // } else
       if (error.response.status === 500) {
         toast.error('Server error! Please try later!');
       } else {

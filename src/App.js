@@ -1,5 +1,5 @@
 // import { Component } from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Phonebook from './pages/Phonebook';
 import { Home } from './pages/Home';
@@ -70,9 +70,7 @@ export default function App() {
           />
           <Route
             path="/phonebook"
-            element={
-              <PrivateRoute isAuth={isAuth} restricted component={Phonebook} />
-            }
+            element={<PrivateRoute component={Phonebook} />}
           />
           <Route
             path="/login"

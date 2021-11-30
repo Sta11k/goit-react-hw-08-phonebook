@@ -1,0 +1,8 @@
+.nav {
+  display: flex;
+  /* margin-right: 30px; */
+}
+.link {
+  margin-right: 30px;
+  padding-left: 20px;
+}

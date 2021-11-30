@@ -1,0 +1,9 @@
+.user__button {
+  display: flex;
+  margin-right: 30px;
+}
+
+.userMenu {
+  display: flex;
+  margin-right: 20px;
+}

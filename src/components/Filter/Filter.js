@@ -9,15 +9,18 @@ function Filter() {
   const value = useSelector(getFilter);
   const onChange = event => dispatch(changeFilter(event.target.value));
   return (
-    <label className={s.label}>
-      Find contacts by name
-      <input
-        className={s.input}
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </label>
+    <div className={s.filter}>
+      <label className={s.label}>
+        {/* Find contacts by name */}
+        <input
+          placeholder="Find contacts by name"
+          className={s.input}
+          type="text"
+          value={value}
+          onChange={onChange}
+        />
+      </label>
+    </div>
   );
 }
 
