@@ -4,6 +4,7 @@ const userLogin = '/users/login';
 const userRegister = '/users/signup';
 const userLogout = '/users/logout';
 const userCurrent = '/users/Current';
+// import { getisAuth } from '../app/selector-auth';
 export const registerThunk = createAsyncThunk(
   'users/register',
   async (user, { rejectWithValue }) => {
@@ -75,6 +76,13 @@ export const currentThunk = createAsyncThunk(
       return data; //action payload
     } catch (err) {
       rejectWithValue({ error: err.message });
+      // if (!token) {
+      //   alert.err('User creation error! Please try again!');
+      // } else if (err.data.status === 500) {
+      //   alert.err('Oops! Server error! Please try later!');
+      // } else {
+      //   alert.err('Something went wrong!');
+      // }
     }
   },
 );

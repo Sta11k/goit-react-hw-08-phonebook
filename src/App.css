@@ -1,5 +1,11 @@
 /* @import url('./components/profile/Profile.module.css'); */
 /* @import url('./components/statistics/Statistics.module.css'); */
+/* body {
+  background-color: rgb(139, 18, 55);
+  background-image: url(/src/pages/images/doroga.jpg);
+  background-size: cover;
+  color: rgb(157, 223, 95);
+} */
 
 ul {
   list-style: none;
@@ -29,7 +35,16 @@ ul {
 }
 
 .App {
-  max-width: 800px;
+  max-width: 1600px;
+
   margin-left: auto;
   margin-right: auto;
+
+  color: rgb(212, 9, 145);
+}
+
+body {
+  background-image: url(/src/pages/images/doroga.jpg);
+  background-size: cover;
+  color: rgb(157, 223, 95);
 }

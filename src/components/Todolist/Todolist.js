@@ -1,4 +1,6 @@
 import s from './Todolist.module.css';
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useSelector } from 'react-redux';
 import { getFilter } from '../../redux/app/app-phonebook-selector';
 import { useDeleteContactsMutation } from '../../redux/app/operation';
@@ -32,14 +34,21 @@ function Todolist({ contact }) {
               Association: {association} | <span> name: {name} | </span>
               <span>number: {phone} |</span>
             </p>
-            <button
+            <Button
+              variant="outline-secondary"
+              type="button"
+              onClick={() => deleteContacts(id)}
+            >
+              {isDeleting ? 'Deleting...' : 'Delete'}
+            </Button>{' '}
+            {/* <button
               className={s.btn}
               type="button"
               onClick={() => deleteContacts(id)}
             >
               {' '}
               {isDeleting ? 'Deleting...' : 'Delete'}
-            </button>
+            </button> */}
           </li>
         );
       })}

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { currentThunk, loginThunk, logOutThunk, registerThunk } from './thunks';
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -72,7 +73,6 @@ const authSlice = createSlice({
     [currentThunk.pending](state, action) {
       return {
         ...state,
-
         isLoading: true,
       };
     },
