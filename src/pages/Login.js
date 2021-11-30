@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import s from './Register.module.css';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../redux/app/thunks.js';
@@ -79,6 +81,7 @@ export function Login() {
         </ul>
         <button type="submit">Login</button>
       </form>
+      <ToastContainer />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import { getUsersName } from '../../redux/app/selector-auth';
+import { getUsersName } from '../../redux/app/selector-auth';
 // import Button from '@material-ui/core/Button';
 import { Button } from 'react-bootstrap';
 import { logOutThunk } from '../../redux/app/thunks';
@@ -10,7 +10,7 @@ export default function UserMenu() {
   const dispatch = useDispatch();
   //   console.log(getUsersName);
 
-  //   const userName = useSelector(getUsersName);
+  const userName = useSelector(getUsersName);
 
   const handleLogOut = () => {
     console.log('click');
@@ -20,7 +20,7 @@ export default function UserMenu() {
   return (
     <div>
       {/* <span>Hello.......... </span> */}
-      {/* <span>Hello... {userName}</span> */}
+      <span>Hello... {userName ? userName : ' '}</span>
       <Button
         color="secondary"
         variant="outlined"

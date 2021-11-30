@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 const BASE_USER_URL = 'https://connections-api.herokuapp.com';
 const userLogin = '/users/login';
 const userRegister = '/users/signup';
@@ -7,7 +8,15 @@ const userCurrent = '/users/Current';
 // import { getisAuth } from '../app/selector-auth';
 export const registerThunk = createAsyncThunk(
   'users/register',
-  async (user, { rejectWithValue }) => {
+  async (user, { rejectWithValue, getState }) => {
+    // const state = getState();
+    // const token = state.auth.token;
+    // const state = getState();
+    // const token = state.auth.token;
+    // if (!token) {
+    //   return;
+    // }
+
     try {
       const response = await fetch(BASE_USER_URL + userRegister, {
         method: 'POST',
@@ -23,13 +32,25 @@ export const registerThunk = createAsyncThunk(
       return data; //action payload
     } catch (err) {
       rejectWithValue({ error: err.message });
+      if (err.response.status === 400) {
+        toast.error('User creation error! Please try again!');
+      } else if (err.response.status === 500) {
+        toast.error('Server error! Please try later!');
+      } else {
+        toast.error('Something went wrong!');
+      }
     }
   },
 );
 
 export const loginThunk = createAsyncThunk(
   'users/login',
-  async (user, { rejectWithValue }) => {
+  async (user, { rejectWithValue, getState }) => {
+    // const state = getState();
+    // const token = state.auth.token;
+    //  if (!token) {
+    //    throw new Error(400);
+    //  }
     try {
       const response = await fetch(BASE_USER_URL + userLogin, {
         method: 'POST',
@@ -39,12 +60,25 @@ export const loginThunk = createAsyncThunk(
 
         body: JSON.stringify(user),
       });
-
+      if (response.status !== 200) {
+        toast.error('User creation error! Please try again!');
+        throw new Error(400);
+      }
+      // console.log('response', response.status);
       const data = await response.json();
       // console.log("response", data);// {token:'', user:{name:"", email:'' }}
       return data; //action payload
-    } catch (err) {
-      rejectWithValue({ error: err.message });
+    } catch (error) {
+      rejectWithValue({ error: error.message });
+      // console.log('error.message', error.message);
+      // if (error.response.status === 400) {
+      //   toast.error('User error! Please try again!');
+      // } else
+      if (error.response.status === 500) {
+        toast.error('Server error! Please try later!');
+      } else {
+        toast.error('Something went wrong!');
+      }
     }
   },
 );
@@ -54,11 +88,9 @@ export const currentThunk = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
     const token = state.auth.token;
-    // const Loading = state.auth.isLoading;
-    // console.log('state', state.auth.isAuth);
 
     if (!token) {
-      return;
+      throw new Error(200);
     }
 
     try {
@@ -76,13 +108,6 @@ export const currentThunk = createAsyncThunk(
       return data; //action payload
     } catch (err) {
       rejectWithValue({ error: err.message });
-      // if (!token) {
-      //   alert.err('User creation error! Please try again!');
-      // } else if (err.data.status === 500) {
-      //   alert.err('Oops! Server error! Please try later!');
-      // } else {
-      //   alert.err('Something went wrong!');
-      // }
     }
   },
 );

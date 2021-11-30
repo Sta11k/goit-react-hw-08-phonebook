@@ -11,8 +11,8 @@ const AuthNav = () => (
       //   activeClassName={s.activeLink}
       style={{
         borderRadius: 35,
-        backgroundColor: '#f50057',
-        // color: "white",
+        backgroundColor: 'rgb(212, 9, 145)',
+        color: 'white',
         padding: '1px 25px',
         marginRight: '10px',
         fontSize: '16px',
@@ -27,8 +27,8 @@ const AuthNav = () => (
       //   activeClassName={s.activeLink}
       style={{
         borderRadius: 35,
-        backgroundColor: '#f50057',
-
+        backgroundColor: 'rgb(212, 9, 145)',
+        color: 'white',
         padding: '1px 25px',
         fontSize: '16px',
       }}

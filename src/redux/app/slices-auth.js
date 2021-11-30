@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+// import { useSelector } from 'react-redux';
 import { currentThunk, loginThunk, logOutThunk, registerThunk } from './thunks';
-
+// import { getIsToken } from './selector-auth';
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -59,7 +60,7 @@ const authSlice = createSlice({
         isLoading: false,
         user: action.payload.user,
         token: action.payload.token,
-        isAuth: true,
+        isAuth: action.payload.token ? true : false,
       };
     },
     [loginThunk.rejected](state, action) {
@@ -77,11 +78,18 @@ const authSlice = createSlice({
       };
     },
     [currentThunk.fulfilled](state, action) {
+      const token = action.payload.token;
+
+      // const token = action.auth.token;
+      console.log('token', token);
       return {
         ...state,
         isLoading: false,
         user: action.payload,
-        isAuth: true,
+
+        isAuth: token === '' ? 'false' : true,
+        // isAuth: !token ? 'false' : 'true',
+        // isAuth: (token ? 'true' : 'false'),
         isFetchingCurrentUser: false,
       };
     },
