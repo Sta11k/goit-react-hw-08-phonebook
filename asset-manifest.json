@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.c70f642e.chunk.css",
+    "main.css": "/goit-react-hw-08-phonebook/static/css/main.677fa9e1.chunk.css",
     "main.js": "/goit-react-hw-08-phonebook/static/js/main.2e67478b.chunk.js",
     "main.js.map": "/goit-react-hw-08-phonebook/static/js/main.2e67478b.chunk.js.map",
     "runtime-main.js": "/goit-react-hw-08-phonebook/static/js/runtime-main.54f0b136.js",
@@ -10,7 +10,7 @@
     "static/js/2.92aeb821.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/2.92aeb821.chunk.js.map",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
     "static/css/2.a0e46b83.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/2.a0e46b83.chunk.css.map",
-    "static/css/main.c70f642e.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/main.c70f642e.chunk.css.map",
+    "static/css/main.677fa9e1.chunk.css.map": "/goit-react-hw-08-phonebook/static/css/main.677fa9e1.chunk.css.map",
     "static/js/2.92aeb821.chunk.js.LICENSE.txt": "/goit-react-hw-08-phonebook/static/js/2.92aeb821.chunk.js.LICENSE.txt",
     "static/media/App.css": "/goit-react-hw-08-phonebook/static/media/doroga.c01221ec.jpg"
   },
@@ -18,7 +18,7 @@
     "static/js/runtime-main.54f0b136.js",
     "static/css/2.a0e46b83.chunk.css",
     "static/js/2.92aeb821.chunk.js",
-    "static/css/main.c70f642e.chunk.css",
+    "static/css/main.677fa9e1.chunk.css",
     "static/js/main.2e67478b.chunk.js"
   ]
 }
