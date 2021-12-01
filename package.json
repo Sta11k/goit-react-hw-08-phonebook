@@ -13,6 +13,7 @@
     "gh-pages": "^3.2.3",
     "logger": "0.0.1",
     "modern-normalize": "^1.1.0",
+    "netlify-cli": "^8.0.9",
     "persistor": "^2.11.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
