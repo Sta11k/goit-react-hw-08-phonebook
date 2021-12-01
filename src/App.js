@@ -65,29 +65,3 @@ export default function App() {
     )
   );
 }
-
-{
-  /* <header className="App-header">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/phonebook">Phonebook</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-            <li>
-              <button type="button" onClick={handleLogOut}>
-                Log Out
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </header> */
-}
