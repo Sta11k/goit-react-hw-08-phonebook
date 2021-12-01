@@ -14,9 +14,9 @@ function Navigation() {
       {isAuth && (
         <NavLink
           to="/phonebook"
-          // exact
-          className={s.link}
-          activeClassName={s.activeLink}
+          //exact
+          // className={s.link}
+          // activeClassName={s.activeLink}
         >
           Phonebook
         </NavLink>

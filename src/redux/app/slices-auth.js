@@ -11,7 +11,7 @@ const authSlice = createSlice({
     isLoading: false,
     isAuth: false,
 
-    isFetchingCurrentUser: false,
+    isRefresh: false,
     // myProp: 'Test',
   },
   // reducers: {
@@ -75,22 +75,25 @@ const authSlice = createSlice({
       return {
         ...state,
         isLoading: true,
+        isRefresh: true,
       };
     },
-    [currentThunk.fulfilled](state, action) {
-      const token = action.payload.token;
+    [currentThunk.fulfilled](state, action, token) {
+      // const token = action.payload.token;
 
-      // const token = action.auth.token;
-      console.log('token', token);
+      // // const token = action.auth.token;
+      // console.log('token', token);
       return {
         ...state,
         isLoading: false,
         user: action.payload,
+        isRefresh: false,
+        // token: action.payload.token,
+        // isAuth: action.payload.token ? true : false,
 
         isAuth: token === '' ? 'false' : true,
         // isAuth: !token ? 'false' : 'true',
         // isAuth: (token ? 'true' : 'false'),
-        isFetchingCurrentUser: false,
       };
     },
     [currentThunk.rejected](state, action) {
@@ -99,7 +102,7 @@ const authSlice = createSlice({
         isLoading: false,
         isAuth: false,
         error: action.payload,
-
+        isRefresh: false,
         // isFetchingCurrentUser: false,
       };
     },

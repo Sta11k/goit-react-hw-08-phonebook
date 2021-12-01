@@ -7,19 +7,21 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { PublicRoute } from './routs/PublicRout';
 import { PrivateRoute } from './routs/PrivateRout';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { currentThunk } from './redux/app/thunks';
 // import { logOutThunk } from './redux/app/thunks';
 import AppBar from '../src/components/AppBar/AppBAr';
-// import { getIsFetchingCurrent } from './redux/app/selector-auth';
+import { getIsRefresh } from './redux/app/selector-auth';
 // import { authSelector } from './redux/app/selector-auth';
 
 const isAuth = false;
 
 export default function App() {
   const dispatch = useDispatch();
-  // const isFetchingCurrentUser = useSelector(getIsFetchingCurrent);
+  // const isFetchingCurrentUser = useSelector(state => state.state);
+  const isFetchingCurret = useSelector(getIsRefresh);
+  // console.log(isFetchingCurret);
 
   useEffect(() => {
     dispatch(currentThunk());
@@ -34,10 +36,38 @@ export default function App() {
   //   dispatch(logOutThunk());
   // };
   return (
-    // isFetchingCurrentUser && (
-    <div className="App">
-      <AppBar />
-      {/* <header className="App-header">
+    !isFetchingCurret && (
+      <div className="App">
+        <AppBar />
+        <main>
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+              redirectTo="/Phonebook"
+              // exact
+              // element={<PrivateRoute isAuth={isAuth} component={Home}/>}
+            />
+            <Route
+              path="/phonebook"
+              isAuth={isAuth}
+              element={<PrivateRoute component={Phonebook} />}
+            />
+
+            <Route path="/login" element={<PublicRoute component={Login} />} />
+            <Route
+              path="/register"
+              element={<PublicRoute isAuth={isAuth} component={Register} />}
+            />
+          </Routes>
+        </main>
+      </div>
+    )
+  );
+}
+
+{
+  /* <header className="App-header">
         <nav>
           <ul>
             <li>
@@ -59,31 +89,5 @@ export default function App() {
             </li>
           </ul>
         </nav>
-      </header> */}
-      <main>
-        <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-            // exact
-            // element={<PrivateRoute isAuth={isAuth} component={Home}/>}
-          />
-          <Route
-            path="/phonebook"
-            element={<PrivateRoute component={Phonebook} />}
-          />
-          <Route
-            path="/login"
-            isAuth={isAuth}
-            element={<PublicRoute component={Login} />}
-          />
-          <Route
-            path="/register"
-            element={<PublicRoute isAuth={isAuth} component={Register} />}
-          />
-        </Routes>
-      </main>
-    </div>
-    // )
-  );
+      </header> */
 }
